@@ -8,7 +8,7 @@ import "../../App.css"
 export const DashboardHeader = () =>{
     const handleMenuToogle = () =>{
         document.getElementById('header-toggle').classList.toggle('bx-x')
-        document.getElementById('nav-bar').classList.toggle('show')
+        document.getElementById('nav-bar').classList.toggle('extend-sidebar')
         document.getElementById('body-pd').classList.toggle('body-pd')
         document.getElementById('header').classList.toggle('body-pd')
         document.getElementById("adra-logo-responsive").classList.toggle("adra-logo-shrink")    

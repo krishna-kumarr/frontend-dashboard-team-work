@@ -13,37 +13,29 @@
     --nav-width: 68px;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
-    -z-fixed: -1;
+    --z-fixed: -1;
+    --z-fixed-top: 1;
 }
 [data-theme="dark"]{
     --nav-background:black;
     --nav-text-color:white;
-    --white-color: #F7F6FB;
-    --body-background:rgb(55 153 155);
-    --header-bottom-color:rgba(128, 128, 128, 0.411);
     --nav-side-color:rgb(55 153 155);
+    --header-background:white;
+    --header-text-color:black;
+    --header-bottom-color:rgba(128, 128, 128, 0.411);
+    --body-background:rgb(55 153 155);
+    --white-color: #F7F6FB;
 }
 
 [data-theme="light"]{
     --nav-background:rgb(55 153 155);
     --nav-text-color:white;
+    --nav-side-color:black;
+    --header-background:white;
+    --header-text-color:black;
+    --header-bottom-color:rgba(128, 128, 128, 0.411);
     --body-background:rgb(55 153 155);
     --white-color: #F7F6FB;
-    --header-bottom-color:rgba(128, 128, 128, 0.411);
-    --nav-side-color:black;
-}
-
-
-.navbar-default-background{
-    background-color: var(--nav-background);
-    color: var(--nav-text-color);
-}
-.text-color-change a,p{
-    color: black;
-}
-.header-default-background{
-    background-color:var(--black-background);
-    color: black;
 }
 body{
     position: relative;
@@ -52,14 +44,11 @@ body{
     font-size: var(--normal-font-size);
     transition: .5s;
 }
-
-a{
-    text-decoration: none;
+/* header default backgroudd */
+.header-default-background{
+    background-color:var(--header-background);
+    color:var(--header-text-color);
 }
-.height-100{
-    height:auto;
-}
-
 .header{
     width: 100%;
     height: var(--header-height);
@@ -70,7 +59,7 @@ a{
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    z-index: var(--z-fixed);
+    z-index: var(--z-fixed-top);
     transition: .5s;
     border-bottom: 1px solid var(--header-bottom-color);
 }
@@ -93,6 +82,24 @@ a{
     width: 40px;
 }
 
+
+
+.text-color-change a,p{
+    color: black;
+}
+a{
+    text-decoration: none;
+}
+.height-100{
+    height:auto;
+    overflow: scroll;
+}
+
+/* navbar default bacground   */
+.navbar-default-background{
+    background-color: var(--nav-background);
+    color: var(--nav-text-color);
+}
 .l-navbar{
     position: fixed;
     top: 0;
@@ -148,7 +155,7 @@ a{
     font-size: 1.25rem;
 }
 
-.show{
+.extend-sidebar{
     left: 0;
 }
 
@@ -209,7 +216,7 @@ a{
         left: 0;
         padding: 1rem 1rem 0 0;
     }
-    .show{
+    .extend-sidebar{
         width: calc(var(--nav-width) + 156px);
     }
     .body-pd{

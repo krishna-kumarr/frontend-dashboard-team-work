@@ -1,0 +1,122 @@
+:root{
+    --btn-background:rgb(55 153 155);
+    --border-color:rgb(55 153 155);
+    --imp-heading-color:rgb(55 153 155);
+}
+.timeline{
+    position: relative;
+}
+.timeline ul li{
+    list-style-type: none;
+}
+.timeline ul li p{
+    font-size: 13px;
+}
+.timeline-btn button{
+    border-radius: 6px;
+    border-width: 0px;
+    color: white;
+    padding: .3rem 1rem;
+    background-color: var(--imp-heading-color);
+    border: 1px solid var(--border-color);
+    transition: all .3s ease-in-out;
+}
+.timeline-btn button:hover{
+    background-color: white;
+    color: var(--imp-heading-color);
+}
+
+.timeeline-card-image{
+    width: 100%;
+    height: auto;
+}
+
+.create-timeline-heading input{
+    border: 1px solid var(--border-color);
+    outline: none;
+}
+.create-timeline-heading button,.create-timeline-content button,.content-adding-btn button{
+    border-radius: 6px;
+    border-width: 0px;
+    background: var(--btn-background);
+    padding: .3rem 1rem;
+    color: white;
+}
+.create-timeline-content  input,.create-timeline-content textarea{
+    border: 1px solid var(--border-color);
+    outline: none;
+    width: 100%;
+}
+.creating-relative{
+    position: relative;
+}
+.creating-sticky{
+    position: sticky;
+    top: 20px;
+}
+.creating-final-sticky{
+    position: sticky;
+    bottom: 40px;
+}
+.accordion-button {
+    display: inline;
+    width: auto;
+}
+.accordion-button:focus{
+    box-shadow:none;
+}
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-width: 0;
+}
+.accordion-button{
+    width: 100%;
+    text-align: center;
+    color: var(--imp-heading-color) !important;
+}
+.important-heading{
+    color: var(--imp-heading-color) !important;
+}
+.textAreaContent-para{
+    font-size: 1rem!important;
+    min-height: 3rem;
+    max-height: 3rem;
+    overflow: hidden;
+}
+.accordion-item {
+    border-width: 0;
+}
+@media (min-width: 786px){
+    .timeline ul li{
+        position: relative;
+        width: 50%;
+        margin-bottom: 50px;
+        padding: 1rem;
+    }
+    .timeline ul li:nth-child(odd){
+        float: left;
+        clear: right;
+        border-right: 2px solid var(--border-color);
+    }
+    .timeline ul li:nth-child(even){
+        float: right;
+        clear: left;
+        transform: translateX(-2px);
+        border-left: 2px solid var(--border-color);
+
+    }
+    .timeline ul li::after{
+        content: '';
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-color: var(--border-color);
+        border-radius: 50%;
+        top: 25px;
+    }
+    .timeline ul li:nth-child(odd)::after{
+        right: -12px;
+    }
+    .timeline ul li:nth-child(even)::after{
+        left: -10px;
+    }
+}
