@@ -1,8 +1,14 @@
-import React, { useState } from "react";
-import "../Reusable-css/AdminSidebar.css"
+import React, { useEffect, useState } from "react";
+import "../Reusable-css/AdminSecurityPractices.css";
+import "../../App.css";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 
 export const AdminSecurityPracticesPage = () =>{
+    useEffect(()=>{
+        Aos.init()
+    },[])
 
     const securityPracticesArray = [
         {
@@ -202,139 +208,141 @@ export const AdminSecurityPracticesPage = () =>{
 
     return(
         <>
-            <div class="height-100 main-content ps-4 py-2 header-default-background">
-                <div className="col-12 container mt-5 security-practice-chart-height rounded overflow-scroll">
-                    <div className="col-12 d-flex flex-wrap">
-                        <div className="col-12 d-flex flex-wrap align-items-center">
-                            <h2 className="col-8 col-md-10 text-start ps-4 my-4 text-secondary">Frontend security practices</h2>
-                            <div className="col-4 col-md-2 text-end">
-                                <button className="col-12 col-md-10 col-lg-6 py-1 me-3 add-securityPractices-btn border-0 text-light" data-bs-toggle="modal" data-bs-target="#staticBackdropAddSecurityPractices">Add</button>
+            <div class="height-100 main-content py-2 header-default-background">
+                <div className="container">
+                    <div className="mt-5 security-practice-chart-height rounded">
+                        <div className="d-flex flex-wrap justify-content-center">
+                            <div className="col-11 d-flex flex-wrap align-items-center">
+                                <h2 className="col-8 col-md-10 text-start ps-4 my-4 text-secondary">Frontend security practices</h2>
+                                <div className="col-4 col-md-2 text-end">
+                                    <button className="col-12 col-md-10 col-lg-6 py-1 me-3 add-securityPractices-btn border-0 text-light" data-bs-toggle="modal" data-bs-target="#staticBackdropAddSecurityPractices">Add</button>
+                                </div>
                             </div>
-                        </div>
-                        {securityPracticesArray.map((v,i)=>{
-                            return <div className="col-12 p-3" key={i}>
-                                <div className="col-12 shadow rounded p-4 d-flex flex-wrap">
-                                    <div className="col-4 p-2 security-attack-image">
-                                        <img src={require('../image/'+v.image)} alt="security-attack-image"/>
-                                    </div>
-                                    <div className="col-8 p-4">
-                                        <h4 className="text-center pb-4 important-heading">{v.title}</h4>
-                                        <p className="set-solving-height">{v.therory}</p>
-                                    
-                                        <div className="col-12 d-flex justify-content-end">
-                                            <div className="col-4 col-md-5 col-lg-3 text-center text-light read-more-btn"  data-bs-toggle="modal" data-bs-target="#staticBackdropReadMore" >
-                                                <p className="m-0 rounded">Read more</p>
+                            {securityPracticesArray.map((v,i)=>{
+                                return <div className="col-11 m-3" key={i}>
+                                    <div className="shadow d-flex flex-wrap align-items-center security-card overflow-hidden" >
+                                        <div className="col-12 col-lg-4 security-attack-image">
+                                            <img src={require('../image/'+v.image)} alt="security-attack-image" className="col-12 security-attack-image"/>
+                                        </div>
+                                        <div className="col-12 col-lg-8 p-4">
+                                            <h4 className="pb-4 important-heading">{v.title}</h4>
+                                            <p className="set-solving-height security-card-content">{v.therory}</p>
+                                        
+                                            <div className="col-12 d-flex justify-content-end">
+                                                <div className="col-4 col-md-5 col-lg-3 text-center read-more-btn"  data-bs-toggle="modal" data-bs-target="#staticBackdropReadMore" >
+                                                    <p className="m-0 rounded">Read more</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        })}
+                            })}
+                        </div>
                     </div>
-                </div>
-                  
+                    
 
-                {/* security practice adding modal box  */}
-                <div className="modal modal-md fade" id="staticBackdropAddSecurityPractices" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content overflow-scroll security-practice-modal-content">
-                            <div className="modal-header">
-                                <h1 className="modal-title text-dark fs-5" id="staticBackdropLabel">Add more security related issues</h1>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                {err ? <p className="text-danger">Some inputs are missing</p> : null}
-                                <form className="col-12 p-3 d-flex flex-wrap justify-content-center">
-                                    <input type="text" placeholder="New attack" className="col-12 mt-4 ps-3 addsecurity-input py-1 rounded" name="title" />
-                                    <textarea cols="3" rows="5" placeholder="Detail explaination of this attack" name="therory" className="mt-4 addsecurity-input py-1 rounded" />
-                                    
-                                    
-                                    {
-                                        videoReference ?  
-                                            <div className="col-6 px-5 mt-5">
-                                                <button type="button" className="col-12 add-securityPractices-btn text-light border-0" onClick={handleAddVideoReference}>Add video</button>
-                                            </div>
-                                        :
-                                            <input type="text" placeholder="Reference video link " className="addsecurity-input col-12 mt-4 ps-3 py-1 rounded" name="videoForSolveThis" />
-                                    }
+                    {/* security practice adding modal box  */}
+                    <div className="modal modal-md fade" id="staticBackdropAddSecurityPractices" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content overflow-scroll security-practice-modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title text-dark fs-5" id="staticBackdropLabel">Add more security related issues</h1>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    {err ? <p className="text-danger">Some inputs are missing</p> : null}
+                                    <form className="col-12 p-3 d-flex flex-wrap justify-content-center">
+                                        <input type="text" placeholder="New attack" className="col-12 mt-4 ps-3 addsecurity-input py-1 rounded" name="title" />
+                                        <textarea cols="3" rows="5" placeholder="Detail explaination of this attack" name="therory" className="mt-4 addsecurity-input py-1 rounded" />
+                                        
+                                        
+                                        {
+                                            videoReference ?  
+                                                <div className="col-6 px-5 mt-5">
+                                                    <button type="button" className="col-12 add-securityPractices-btn text-light border-0" onClick={handleAddVideoReference}>Add video</button>
+                                                </div>
+                                            :
+                                                <input type="text" placeholder="Reference video link " className="addsecurity-input col-12 mt-4 ps-3 py-1 rounded" name="videoForSolveThis" />
+                                        }
 
-                                    {
-                                        docReference ? 
-                                            <div className="col-6 px-1 mt-5">
-                                                <button type="button" className="col-12 add-securityPractices-btn text-light border-0" onClick={handleAddDocumentReference}>Add document</button>
-                                            </div>
-                                        :
-                                            <input type="text" placeholder="Reference document link " className="addsecurity-input col-12 mt-4 ps-3 py-1 rounded" name="reference" />
-                                    }
-                                    
+                                        {
+                                            docReference ? 
+                                                <div className="col-6 px-1 mt-5">
+                                                    <button type="button" className="col-12 add-securityPractices-btn text-light border-0" onClick={handleAddDocumentReference}>Add document</button>
+                                                </div>
+                                            :
+                                                <input type="text" placeholder="Reference document link " className="addsecurity-input col-12 mt-4 ps-3 py-1 rounded" name="reference" />
+                                        }
+                                        
 
 
-                                    <button type="button" className="mt-5 col-6 py-1 add-securityPractices-btn text-light border-0" data-bs-dismiss={addMoreSecurity.title!=="" && addMoreSecurity.therory!=="" ? "modal" : null} aria-label={addMoreSecurity.title!=="" && addMoreSecurity.therory!=="" ? "Close" : null} onClick={handleSubmitSecurityPractices}>Add</button>
-                                </form>                            
+                                        <button type="button" className="mt-5 col-6 py-1 add-securityPractices-btn text-light border-0" data-bs-dismiss={addMoreSecurity.title!=="" && addMoreSecurity.therory!=="" ? "modal" : null} aria-label={addMoreSecurity.title!=="" && addMoreSecurity.therory!=="" ? "Close" : null} onClick={handleSubmitSecurityPractices}>Add</button>
+                                    </form>                            
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                                    
-                {/* security attack modal box  */}
-                <div className="modal fade " id="staticBackdropReadMore" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-xl">
-                        <div className="modal-content overflow-scroll security-practice-modal-content">
-                            <div className="modal-header">
-                                <h1 className="modal-title text-dark fs-5" id="staticBackdropLabel">{modelboxContent.title}</h1>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                {
-                                    modelboxContent.image!==undefined ? 
-                                        <div className="col-12 p-1 security-attack-image-modelBox">
-                                            {/* <img src={require('../images/'+modelboxContent.image)} alt="security-attack-image"/> */}
-                                        </div>
-                                    :
-                                        null
-                                }
-                            
-
-                                {/* <h3 className="m-0 ps-1 important-heading fs-5">security practices to secure : </h3> */}
-                                <p className="set-solving-model p-2 text-secondary">{modelboxContent.therory}</p>
-                                
-                                {   
-                                    modelboxContent.typeOfAttacks!==undefined ?
-                                        <>
-                                            <div className="col-12 d-flex flex-wrap border p-3">
-                                                <h4 className="fw-bold text-decoration-underline pb-3 text-dark">Types of attack</h4>
-                                                {modelboxContent.typeOfAttacks.map((v,i)=>{
-                                                    return <div className="col-12">
-                                                                <h6 className="text-dark">{v.attackType}</h6>
-                                                                <p className="set-solving-model text-secondary">{v.toPrevent}</p>
-                                                            </div>
-                                                })}
-                                            </div>                                          
-                                        </>
-                                    :
-                                        null
-                                }
-                                
-                                {
-                                    modelboxContent.reference!==undefined ?
-                                            <div className="p-2">
-                                                <h4 className="text-dark">Refernce document :</h4>
-                                                <a href={modelboxContent.reference} target="_blank">{modelboxContent.reference}</a>
+                                        
+                    {/* security attack modal box  */}
+                    <div className="modal fade " id="staticBackdropReadMore" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-xl">
+                            <div className="modal-content overflow-scroll security-practice-modal-content">
+                                <div className="modal-header">
+                                    <h1 className="modal-title text-dark fs-5" id="staticBackdropLabel">{modelboxContent.title}</h1>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    {
+                                        modelboxContent.image!==undefined ? 
+                                            <div className="col-12 p-1 security-attack-image-modelBox">
+                                                {/* <img src={require('../images/'+modelboxContent.image)} alt="security-attack-image"/> */}
                                             </div>
-                                    :
-                                        null
-                                }
+                                        :
+                                            null
+                                    }
+                                
 
-                                {
-                                    modelboxContent.videoForSolveThis!==undefined ?
-                                        <div className="p-4">
-                                            <h6 className="mt-3 text-dark">To overcome this problem this video link helps you</h6>
-                                            <a href={modelboxContent.videoForSolveThis} target="_blank">{modelboxContent.videoForSolveThis}</a>
-                                        </div>
-                                    :
-                                        null
-                                }
+                                    {/* <h3 className="m-0 ps-1 important-heading fs-5">security practices to secure : </h3> */}
+                                    <p className="set-solving-model p-2 text-secondary">{modelboxContent.therory}</p>
+                                    
+                                    {   
+                                        modelboxContent.typeOfAttacks!==undefined ?
+                                            <>
+                                                <div className="col-12 d-flex flex-wrap border p-3">
+                                                    <h4 className="fw-bold text-decoration-underline pb-3 text-dark">Types of attack</h4>
+                                                    {modelboxContent.typeOfAttacks.map((v,i)=>{
+                                                        return <div className="col-12">
+                                                                    <h6 className="text-dark">{v.attackType}</h6>
+                                                                    <p className="set-solving-model text-secondary">{v.toPrevent}</p>
+                                                                </div>
+                                                    })}
+                                                </div>                                          
+                                            </>
+                                        :
+                                            null
+                                    }
+                                    
+                                    {
+                                        modelboxContent.reference!==undefined ?
+                                                <div className="p-2">
+                                                    <h4 className="text-dark">Refernce document :</h4>
+                                                    <a href={modelboxContent.reference} target="_blank">{modelboxContent.reference}</a>
+                                                </div>
+                                        :
+                                            null
+                                    }
 
+                                    {
+                                        modelboxContent.videoForSolveThis!==undefined ?
+                                            <div className="p-4">
+                                                <h6 className="mt-3 text-dark">To overcome this problem this video link helps you</h6>
+                                                <a href={modelboxContent.videoForSolveThis} target="_blank">{modelboxContent.videoForSolveThis}</a>
+                                            </div>
+                                        :
+                                            null
+                                    }
+
+                                </div>
                             </div>
                         </div>
                     </div>

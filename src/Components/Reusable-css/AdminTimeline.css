@@ -1,49 +1,63 @@
-:root{
-    --btn-background:rgb(55 153 155);
-    --border-color:rgb(55 153 155);
-    --imp-heading-color:rgb(55 153 155);
-}
-.timeline{
+.roadmap-box{
+    border-left: 1px solid var(--roadmap-border-color);
     position: relative;
 }
-.timeline ul li{
-    list-style-type: none;
+.theory-limit-setting{
+    font-size: 15px;
+    min-height: 4.3rem;
+    max-height: 4.3rem;
+    overflow: hidden;
 }
-.timeline ul li p{
-    font-size: 13px;
+.roadmap-content::after{
+    content: '';
+    position: absolute;
+    top: 0rem;
+    left: -3.7rem;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: var(--roadmap-border-color);
 }
-.timeline-btn button{
-    border-radius: 6px;
-    border-width: 0px;
-    color: white;
-    padding: .3rem 1rem;
-    background-color: var(--imp-heading-color);
-    border: 1px solid var(--border-color);
-    transition: all .3s ease-in-out;
+.roadmap-content{
+    background-color: var(--roadmap-card-background);
+    border-radius: 0px 12px 12px 12px;
+    position: relative;
+    z-index: 1;
+} 
+.roadmap-content::before{
+    content: '';
+    position: absolute;
+    top: .28rem;
+    left: -.5rem;
+    height: 20px;
+    width: 20px;
+    background-color: var( --roadmap-card-recatngle);
+    z-index: -1;
+    transform: rotate(45deg);
 }
-.timeline-btn button:hover{
-    background-color: white;
-    color: var(--imp-heading-color);
-}
+.text-color p{
+    color:var(--roadmap-card-text-color);
 
+}
 .timeeline-card-image{
     width: 100%;
-    height: auto;
+    height: 230px;
+    border-radius: 0px 0px 0 12px;
 }
 
 .create-timeline-heading input{
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--roadmap-border-color);
     outline: none;
 }
 .create-timeline-heading button,.create-timeline-content button,.content-adding-btn button{
     border-radius: 6px;
     border-width: 0px;
-    background: var(--btn-background);
+    background: var(--roadmap-card-background);
     padding: .3rem 1rem;
     color: white;
 }
 .create-timeline-content  input,.create-timeline-content textarea{
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--roadmap-border-color);
     outline: none;
     width: 100%;
 }
@@ -71,52 +85,15 @@
 .accordion-button{
     width: 100%;
     text-align: center;
-    color: var(--imp-heading-color) !important;
+    color: var(--roadmap-important-heading) !important;
 }
 .important-heading{
-    color: var(--imp-heading-color) !important;
+    color: var(--roadmap-important-heading) !important;
 }
 .textAreaContent-para{
     font-size: 1rem!important;
-    min-height: 3rem;
-    max-height: 3rem;
     overflow: hidden;
 }
 .accordion-item {
     border-width: 0;
-}
-@media (min-width: 786px){
-    .timeline ul li{
-        position: relative;
-        width: 50%;
-        margin-bottom: 50px;
-        padding: 1rem;
-    }
-    .timeline ul li:nth-child(odd){
-        float: left;
-        clear: right;
-        border-right: 2px solid var(--border-color);
-    }
-    .timeline ul li:nth-child(even){
-        float: right;
-        clear: left;
-        transform: translateX(-2px);
-        border-left: 2px solid var(--border-color);
-
-    }
-    .timeline ul li::after{
-        content: '';
-        position: absolute;
-        height: 20px;
-        width: 20px;
-        background-color: var(--border-color);
-        border-radius: 50%;
-        top: 25px;
-    }
-    .timeline ul li:nth-child(odd)::after{
-        right: -12px;
-    }
-    .timeline ul li:nth-child(even)::after{
-        left: -10px;
-    }
 }

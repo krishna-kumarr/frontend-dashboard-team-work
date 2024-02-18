@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../Reusable-css/AdminSidebar.css";
 import "../Reusable-css/AdminTimeline.css"
+import "../../App.css"
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
@@ -94,7 +95,7 @@ export const AdminRoadMapPage = () =>{
                                             },
                                             {
                                                 heading:"Redux",
-                                                image:"https://www.pistalix.in/wp-content/uploads/2018/10/redux_centre.png",
+                                                image:"https://redux.js.org/img/redux-logo-landscape.png",
                                                 textareaCnt:"Redux allows you to manage your app's state in a single place and keep changes in your app more predictable and traceable, making it easier to understand the changes happening in your app. But all of these benefits come with a set of challenges",
                                                 status:"not started",
                                                 startTime:  '26-05-2024',
@@ -118,7 +119,7 @@ export const AdminRoadMapPage = () =>{
                                             },
                                             {
                                                 heading:"Redux Saga",
-                                                image:"https://redux-saga.js.org//img/Redux-Saga-Logo-Portrait.png",
+                                                image:"https://miro.medium.com/v2/resize:fit:1000/1*naW_p6izSmOsAM_zdcqtRA.jpeg",
                                                 textareaCnt:"Redux Saga is a middleware library used to allow a Redux store to interact with resources outside of itself asynchronously. This includes making HTTP requests to external services, accessing browser storage, and executing I/O operations",
                                                 status:"not started",
                                                 startTime:  '6-07-2024',
@@ -174,7 +175,7 @@ export const AdminRoadMapPage = () =>{
                                             },
                                             {
                                                 heading:"Mongo DB",
-                                                image:"https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png",
+                                                image:"https://www.gartner.com/pi/vendorimages/mongodb_cloud-database-management-systems_1697586469294.png",
                                                 textareaCnt:"MongoDB handles the conversion of JSON and JSON-like documents, such as BSON, into Java objects effortlessly, making the reading and writing of data in MongoDB fast and incredibly efficient when analyzing real-time information across multiple development environments.",
                                                 status:"not started",
                                                 startTime:  '26-09-2024',
@@ -214,7 +215,7 @@ export const AdminRoadMapPage = () =>{
                                             },
                                             {
                                                 heading:"JEST Unit testing",
-                                                image:"https://miro.medium.com/v2/resize:fit:300/1*veOyRtKTPeoqC_VlWNUc5Q.png",
+                                                image:"https://res.cloudinary.com/practicaldev/image/fetch/s--Ua0Y2P1K--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://thepracticaldev.s3.amazonaws.com/i/q5mdszh763xifqm3bikn.png",
                                                 textareaCnt:"Jest is a delightful JavaScript Testing Framework with a focus on simplicity.It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!",
                                                 status:"not started'",
                                                 startTime:  '6-11-2024',
@@ -238,7 +239,7 @@ export const AdminRoadMapPage = () =>{
                                             },
                                             {
                                                 heading:"Astro",
-                                                image:"https://astro.build/assets/press/astro-logo-dark.svg",
+                                                image:"https://miro.medium.com/v2/resize:fit:1400/1*hr9dl2_mgQBJpq7TX9e4jw.jpeg",
                                                 textareaCnt:"Astro is the web framework for building content-driven websites like blogs, marketing, and e-commerce. Astro is best-known for pioneering a new frontend architecture to reduce JavaScript overhead and complexity compared to other frameworks",
                                                 status:"not started'",
                                                 startTime:  '6-11-2024',
@@ -270,7 +271,7 @@ export const AdminRoadMapPage = () =>{
                                             },
                                             {
                                                 heading:"Axios",
-                                                image:"https://assets-global.website-files.com/5e19ea5aa7d3a217492e372b/624de949df5a11680ab170b9_Axios%20logo%20-%20RGB%20-%20minimum%20space.png",
+                                                image:"https://www.cybersecurity-strategy-masters.nyu.edu/wp-content/uploads/2019/06/axios-logo.jpg",
                                                 textareaCnt:"Axios is a promise-based HTTP library that lets developers make requests to either their own or a third-party server to fetch data. It offers different ways of making requests such as GET , POST , PUT/PATCH , and DELETE",
                                                 status:"not started'",
                                                 startTime:  '6-11-2024',
@@ -278,7 +279,7 @@ export const AdminRoadMapPage = () =>{
                                             },
                                             {
                                                 heading:"React Router DOM",
-                                                image:"https://www.codesmith.io/hs-fs/hubfs/Blog%20Images/Blog%20Photos/react-router-logo.png?width=600&name=react-router-logo.png",
+                                                image:"https://www.loginradius.com/blog/static/a53096b6796dd3d1e3f3df8bc77a6689/03979/index.png",
                                                 textareaCnt:"React Router DOM is an npm package that enables you to implement dynamic routing in a web app. It allows you to display pages and allow users to navigate them. It is a fully-featured client and server-side routing library for React.",
                                                 status:"not started'",
                                                 startTime:  '6-11-2024',
@@ -298,94 +299,55 @@ export const AdminRoadMapPage = () =>{
                         ]
 
     return(                         
-        <div class="height-100 main-content ps-4 py-2 header-default-background">
-            <div className="container-fluid">
-                <div className="timeline col-12 ">                             
-                    <div className="accordion" id="accordionExample">
+        <div class="height-100 main-content ps-4 py-2 header-default-background overflow-hidden">
+            <div className="container">                         
+                <div className="accordion d-flex flex-wrap" id="accordionExample">
                     {
                         timeLineArray.map((val,ind)=>{
-                            return  <div className="accordion-item bg-transparent text-center py-3 col-12" key={ind}>
-                                        <h4 className="accordion-header" id={"heading"+ind}>
-                                            <button className="accordion-button bg-transparent text-center fs-3" type="button" data-bs-toggle="collapse" data-bs-target={"#collapse"+ind} aria-expanded={ind==0 ?"true" : "false"} aria-controls={"collapse"+ind}>
+                            return  <div className="accordion-item bg-transparent text-center col-12" key={ind}>
+                                        <p className="accordion-header" id={"heading"+ind}>
+                                            <button className="accordion-button bg-transparent fs-3" type="button" data-bs-toggle="collapse" data-bs-target={"#collapse"+ind} aria-expanded={ind==0 ?"true" : "false"} aria-controls={"collapse"+ind}>
                                                 {val.title}
                                             </button>
-                                        </h4>
+                                        </p>
                                         <div id={"collapse"+ind} className={ind===0 ?"accordion-collapse collapse show":"accordion-collapse collapse"} aria-labelledby={"heading"+ind} data-bs-parent="#accordionExample">
-                                            <div class="accordion-body p-0">
-                                                <ul className="col-12 ps-0">
+                                            <div class="accordion-body d-flex flex-wrap mt-5"> 
+                                                <div className="col-11 roadmap-box">
                                                     {
                                                         val.TimeLineCharts.map((value,index)=>{
-                                                            return  <li className="m-0" key={index}>
-                                                                        <div className="shadow timeline-content p-3 my-2 col-12 d-flex flex-wrap align-items-center"  data-aos={index%2===0 ? "fade-up-right" : "fade-up-left"} data-aos-duration="2000">
-                                                                            {
-                                                                                index%2===0 ?
-                                                                                    <>  
-                                                                                        {
-                                                                                            value.image===undefined ?  
-                                                                                                    null
-                                                                                            :
-                                                                                                <div className="d-none d-lg-block col-12 col-lg-4">
-                                                                                                    <img src={value.image} alt="timeline-image" className="timeeline-card-image"/>
-                                                                                                </div>
-                                                                                        }
-                                                                                        
-                                                                                        <div className={value.image===undefined ? "col-12" : "col-12 col-lg-8 px-3"}>
-                                                                                            <h2 className="important-heading mb-3">{value.heading}</h2>
-                                                                                            <p className="textAreaContent-para">{value.textareaCnt}</p>
-                                                                                            <div className="col-12 d-flex flex-wrap mt-4">
-                                                                                                <p className="col-12 col-xl-6 textAreaContent-para text-center">
-                                                                                                    <span className="fw-bold">Start time : </span>
-                                                                                                    <span className="important-heading fw-bold">{value.startTime}</span>
-                                                                                                </p>
-                                                                                                <p className="col-12 col-xl-6 textAreaContent-para text-center">
-                                                                                                    <span className="fw-bold">End time : </span>
-                                                                                                    <span className="important-heading fw-bold">{value.endTime}</span>
-                                                                                                </p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div className="col-12 d-lg-none">
-                                                                                            <img src={value.image} alt="timeline-image" className="timeeline-card-image"/>
-                                                                                        </div>
-                                                                                    </>
-                                                                               
-                                                                                : 
-                                                                                    <>
-                                                                                        <div className={value.image===undefined ? "col-12" : "col-12 col-lg-8 px-3"}>
-                                                                                            <h2 className="important-heading mb-3">{value.heading}</h2>
-                                                                                            <p className="textAreaContent-para">{value.textareaCnt}</p>
-                                                                                            <div className="col-12 d-flex flex-wrap mt-4">
-                                                                                                <p className="col-12 col-xl-6 textAreaContent-para text-center">
-                                                                                                    <span className="fw-bold">Start time : </span>
-                                                                                                    <span className="important-heading fw-bold">{value.startTime}</span>
-                                                                                                </p>
-                                                                                                <p className="col-12 col-xl-6 textAreaContent-para text-center">
-                                                                                                    <span className="fw-bold">End time : </span>
-                                                                                                    <span className="important-heading fw-bold">{value.endTime}</span>
-                                                                                                </p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        {
-                                                                                            value.image===undefined ?  
-                                                                                                    null
-                                                                                            :
-                                                                                                <div className="col-12 col-lg-4">
-                                                                                                    <img src={value.image} alt="timeline-image" className="timeeline-card-image"/>
-                                                                                                </div>
-                                                                                        }
-                                                                                        
-                                                                                    </>
-                                                                            }
+                                                            return   <div className="roadmap-content shadow text-start mb-3 ms-5 timeline-content d-flex flex-wrap align-items-center" key={index} data-aos="fade-up-left" data-aos-duration="2000">
+                                                                        {
+                                                                            value.image===undefined ?  
+                                                                                    null
+                                                                            :
+                                                                                <div className="col-12 col-lg-4">
+                                                                                    <img src={value.image} alt="timeline-image" className="overflow-hidden timeeline-card-image"/>
+                                                                                </div>
+                                                                        }
+                                                                        
+                                                                        <div className={value.image===undefined ? "col-12 text-color" : "col-12 col-lg-8 px-3 text-color"}>
+                                                                            <h4 className="important-heading mb-3 pt-3">{value.heading}</h4>
+                                                                            <p className="theory-limit-setting">{value.textareaCnt}</p>
+                                                                            <div className="col-12 d-flex flex-wrap mt-4">
+                                                                                <p className="col-12 col-xl-6 textAreaContent-para">
+                                                                                    <span className="fw-bold">Start time : </span>
+                                                                                    <span className="important-heading fw-bold">{value.startTime}</span>
+                                                                                </p>
+                                                                                <p className="col-12 col-xl-6 textAreaContent-para">
+                                                                                    <span className="fw-bold">End time : </span>
+                                                                                    <span className="important-heading fw-bold">{value.endTime}</span>
+                                                                                </p>
+                                                                            </div>
                                                                         </div>
-                                                                    </li>
+                                                                    </div>
                                                         })
                                                     }
-                                                </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                         })
                     }
-                    </div>
                 </div>
             </div>
         </div>

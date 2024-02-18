@@ -1,4 +1,4 @@
-[data-theme="dark"]{
+/* [data-theme="dark"]{
   --first-color: hsl(0, 2%, 16%);
   --first-color-light: white;
   --white-color: #F7F6FB;
@@ -10,4 +10,62 @@
   --body-background:rgb(55 153 155);
   --color:white;
   --icon-color:black;
-  }
+  } */
+
+[data-theme="dark"]{
+  --main-content-background-color:-webkit-radial-gradient(top, circle cover, #393b45 0%, #2d3038 70%);
+  --main-content-background:rgb(55 153 155);
+  --notification--background:-webkit-radial-gradient(top, circle cover, #393b45 0%, #2d3038 70%);
+
+  --sidebar-background:#2a2d35;
+  --sidebar-text-color:#949ba2;
+  --sidebar-side-color:#ffc107;
+
+  --header-background:-webkit-radial-gradient(top, circle cover, #393b45 0%, #2d3038 70%);
+  --header-text-color:#949ba2;
+  --header-bottom-color:rgba(128, 128, 128, 0.411);
+
+  --roadmap-card-background:rgba(68, 70, 79, 0.896);
+  --roadmap-card-recatngle:rgba(255, 255, 255, 0.507);
+  --roadmap-card-text-color:#949ba2;
+  --roadmap-card-important-heading:rgba(68, 70, 79, 0.896);
+  --roadmap-border-color:#ffc107;
+  --roadmap-important-heading:#ffc107ac;
+
+  --security-practices-card-background:rgba(68, 70, 79, 0.896);
+  --security-practices-card-text-color:#949ba2;
+  --security-practices-btn-background:#ffc107;
+  --security-practices-btn-color:white;
+  --security-practices-border-color:#ffc107;
+
+  --imp-heading-color:rgb(55 153 155);
+}
+
+[data-theme="light"]{
+  --main-content-background-color:-webkit-radial-gradient(top, circle cover, #393b45 0%, #2d3038 70%);
+  --main-content-background:rgb(55 153 155);
+  --notification--background:white;
+
+  --sidebar-background:rgb(55 153 155);
+  --sidebar-text-color:whitesmoke;
+  --sidebar-side-color:white;
+
+  --header-background:white;
+  --header-text-color:#949ba2;
+  --header-bottom-color:rgba(128, 128, 128, 0.411);
+
+  --roadmap-card-background:rgba(255, 255, 255, 0.507);
+  --roadmap-card-recatngle:rgb(55 153 155);
+  --roadmap-card-text-color:black;
+  --roadmap-card-important-heading:rgba(68, 70, 79, 0.896);
+  --roadmap-border-color:rgb(55 153 155);
+  --roadmap-important-heading:rgb(55 153 155);
+
+  --security-practices-card-background:white;
+  --security-practices-card-text-color:black;
+  --security-practices-btn-background:rgb(55 153 155);
+  --security-practices-btn-color:white;
+  --security-practices-border-color:rgb(55 153 155);
+
+  --imp-heading-color:rgb(55 153 155);
+}

@@ -1,0 +1,51 @@
+ .security-practice-chart-height{
+    min-height: 85vh;
+    max-height: 85vh;
+}
+.security-card{
+    border-radius: 12px;
+    background-color: var(--security-practices-card-background);
+    border-radius: 12px;
+}
+.security-card-content{
+    color: var(--security-practices-card-text-color);
+}
+.set-solving-height{
+    min-height: 4.5rem;
+    max-height: 4.5rem;
+    overflow: hidden;
+    font-size: 1rem;
+}
+.security-attack-image{
+    height: 250px;
+}
+.read-more-btn{
+    background-color: var(--security-practices-btn-background);
+    padding: .2rem .5rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+.read-more-btn p{
+    color:var(--security-practices-btn-color);
+}
+.security-practice-modal-content{
+    min-height: 70vh;
+    max-height: 70vh;
+    overflow: scroll;
+}
+.set-solving-model{
+    font-size:1rem;
+}
+.add-securityPractices-btn,.add-types-btn{
+    background-color: var(  --security-practices-btn-background);
+    color:var(--imp-heading-color);
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+}
+.addsecurity-input{
+    border: 1px solid var(--border-color);
+    outline: none;
+}
+.important-heading{
+    color:var(--imp-heading-color);
+}

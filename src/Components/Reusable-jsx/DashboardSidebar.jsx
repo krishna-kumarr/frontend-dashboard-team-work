@@ -7,6 +7,7 @@ import { GrArticle } from "react-icons/gr";
 import { CiLogout } from "react-icons/ci";
 import { RxDashboard } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import "../../App.css"
 
 export const DashboardSidebar = () =>{
     useEffect(()=>{
@@ -28,7 +29,6 @@ export const DashboardSidebar = () =>{
                     <Link to="/" class="nav_logo adra-logo-original col-12" id="adra-logo-responsive"> 
                         <img src={require("../image/adraimage.png")} className="adra-img-logo"/>
                     </Link>
-
 
                     <div class="nav_list">
                         <Link to="/" class="nav_link active"> 
