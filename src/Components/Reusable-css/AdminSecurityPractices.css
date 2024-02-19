@@ -18,6 +18,7 @@
 }
 .security-attack-image{
     height: 250px;
+    border-radius: .8rem;
 }
 .read-more-btn{
     background-color: var(--security-practices-btn-background);

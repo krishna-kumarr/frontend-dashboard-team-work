@@ -97,3 +97,6 @@
 .accordion-item {
     border-width: 0;
 }
+.accordion-button:not(.collapsed){
+    box-shadow: none!important;
+}

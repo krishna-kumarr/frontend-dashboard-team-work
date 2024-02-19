@@ -24,6 +24,7 @@ body{
     margin: var(--header-height) 0 0 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
+    transition: .2s;
 }
 
 
@@ -164,9 +165,6 @@ a{
 }
 .body-pd{
     padding-left: calc(var(--sidebar-width));
-}
-.main-content{
-    transition: .5s;
 }
 
 

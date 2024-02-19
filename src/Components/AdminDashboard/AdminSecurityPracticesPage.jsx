@@ -221,7 +221,7 @@ export const AdminSecurityPracticesPage = () =>{
                             {securityPracticesArray.map((v,i)=>{
                                 return <div className="col-11 m-3" key={i}>
                                     <div className="shadow d-flex flex-wrap align-items-center security-card overflow-hidden" >
-                                        <div className="col-12 col-lg-4 security-attack-image">
+                                        <div className="col-12 col-lg-4 p-4">
                                             <img src={require('../image/'+v.image)} alt="security-attack-image" className="col-12 security-attack-image"/>
                                         </div>
                                         <div className="col-12 col-lg-8 p-4">

@@ -299,7 +299,7 @@ export const AdminRoadMapPage = () =>{
                         ]
 
     return(                         
-        <div class="height-100 main-content ps-4 py-2 header-default-background overflow-hidden">
+        <div class="height-100 main-content py-2 header-default-background overflow-hidden">
             <div className="container">                         
                 <div className="accordion d-flex flex-wrap" id="accordionExample">
                     {

@@ -1,0 +1,36 @@
+.trainee-height{
+    min-height: calc(100vh - var(--header-height));
+    overflow: scroll!important;
+}
+.trainee-card{
+    border-radius: 1rem;
+    overflow: hidden;
+}
+.trainee-adding-part{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+}
+.plus-button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.trainee-ccandidate-div{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: whitesmoke;
+    padding: .5rem;
+    border-top-left-radius: 12px;
+}
+.pointer{
+    cursor: pointer;
+}
