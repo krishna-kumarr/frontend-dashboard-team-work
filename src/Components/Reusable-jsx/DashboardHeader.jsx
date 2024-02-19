@@ -47,7 +47,7 @@ export const DashboardHeader = () =>{
             <div class="header_toggle ps-4" id="header-toggle" onClick={handleMenuToogle}> 
                 <CgMenuLeft className="fs-3"/>
             </div>
-            <ul className="d-inline-flex col-10 col-sm-7 col-md-5 col-lg-3 col-xl-2 m-0 align-items-center header-ul">
+            <ul className="d-inline-flex col-10 col-sm-7 col-md-5 col-lg-3 m-0 align-items-center header-ul">
                 <li className="notification m-0 col">
                     <span className="fs-5 pointer"><IoMdNotificationsOutline/></span>
                     <div className="notification-content shadow col-8 col-md-5 col-lg-4">
