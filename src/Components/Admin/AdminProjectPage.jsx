@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import "../Reusable-css/AdminSidebar.css"
-import "../Reusable-css/AdminProjectPage.css"
+import "../Admin/Admin_css/AdminSidebar.css"
+import "../Admin/Admin_css/AdminProjectPage.css"
 
 export const AdminProjectPage = () =>{
     

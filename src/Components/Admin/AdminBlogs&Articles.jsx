@@ -1,6 +1,6 @@
 import React from "react";
-import "../Reusable-css/AdminSidebar.css"
-import "../Reusable-css/AdminBlogs.css"
+import "../Admin/Admin_css/AdminSidebar.css"
+import "../Admin/Admin_css/AdminBlogs.css"
 
 export const AdminBlogsARticlesPage = () =>{
 

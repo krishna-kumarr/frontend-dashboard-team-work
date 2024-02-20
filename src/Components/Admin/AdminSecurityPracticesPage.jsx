@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../Reusable-css/AdminSecurityPractices.css";
+import "../Admin/Admin_css/AdminSecurityPractices.css";
 import "../../App.css";
 import Aos from "aos";
 import 'aos/dist/aos.css';

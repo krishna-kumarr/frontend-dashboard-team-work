@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
- import "../Admin/Admin_css/AdminSidebar.css"
+import "../Admin/Admin_css/AdminSidebar.css"
 import "../Admin/Admin_css/AdminTraineePage.css"
 import { CiUser } from "react-icons/ci";
 import { FiPlus } from "react-icons/fi";

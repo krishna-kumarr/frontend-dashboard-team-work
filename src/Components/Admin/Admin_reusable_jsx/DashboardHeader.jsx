@@ -71,7 +71,7 @@ export const DashboardHeader = () =>{
                 <nav class="nav">
                     <div> 
                         <Link to="/" class="nav_logo adra-logo-original col-12" id="adra-logo-responsive"> 
-                            <img src={require("../image/adraimage.png")} className="adra-img-logo"/>
+                            <img src={require("../../image/adraimage.png")} className="adra-img-logo"/>
                         </Link>
 
                         <div class="nav_list">
