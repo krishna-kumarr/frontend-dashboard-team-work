@@ -1,0 +1,43 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login-background{
+    background-image: url('../image/Login\ Page\ Design.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.login-parent-div{
+    padding:3rem;
+}
+.login-div-leftside{
+    padding: 14rem 3rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+.login-text{
+    color:orangered;
+}
+.login-text button{
+    color:white;
+    background-color: orangered;
+}
+.login-mandatory span{
+    color:orangered;
+    font-size: 1.3rem;
+}
+.login-input{
+    border: none;
+}
+.login-input:focus{
+    box-shadow:none!important;
+}
+.submit-button:hover{
+    color: white !important;
+}

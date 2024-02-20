@@ -1,17 +1,3 @@
-/* [data-theme="dark"]{
-  --first-color: hsl(0, 2%, 16%);
-  --first-color-light: white;
-  --white-color: #F7F6FB;
-  --black-background:rgba(255, 255, 255, 0.466);
-  --white-backbround:white;
-  }
-  
-  [data-theme="light"]{
-  --body-background:rgb(55 153 155);
-  --color:white;
-  --icon-color:black;
-  } */
-
 [data-theme="dark"]{
   --main-content-background-color:-webkit-radial-gradient(top, circle cover, #393b45 0%, #2d3038 70%);
   --main-content-background:rgb(55 153 155);
@@ -39,6 +25,9 @@
   --security-practices-border-color:#ffc107;
 
   --imp-heading-color:rgb(55 153 155);
+
+  --trainee-page-difficulty-active:red;
+  --trainee-page-card-border:gray;
 }
 
 [data-theme="light"]{
@@ -68,4 +57,7 @@
   --security-practices-border-color:rgb(55 153 155);
 
   --imp-heading-color:rgb(55 153 155);
+
+  --trainee-page-difficulty-active:rgb(55 153 155);
+  --trainee-page-card-border:gray;
 }

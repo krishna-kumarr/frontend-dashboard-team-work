@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import "../Reusable-css/AdminSidebar.css";
+import React, { useEffect } from "react"
 import "../Reusable-css/AdminTimeline.css"
 import "../../App.css"
 import Aos from "aos";

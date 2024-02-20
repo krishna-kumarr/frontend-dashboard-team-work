@@ -622,7 +622,8 @@ export const AdminTraineePage = () =>{
             level:'intermediate',
             task:[
                 {
-                    heading:'',
+                    heading:'create login and signup page',
+                    textareaCnt:'',
                     image:''
                 }
             ]
@@ -656,19 +657,20 @@ export const AdminTraineePage = () =>{
     // admin can view the task detalils 
     const [showTaskObject,setShowTaskObject]=useState({})
     const handleViewAndEditModel = (object) =>{
-        console.log("object")
         setShowTaskObject(object)
     }
 
     //setting trainee level
     const [traineeLevel,setTraineeLevel]=useState("fresher")
     const [displayTraineeArray,setDisplayTraineeArray]=useState([])
+    const [displayTableData,setdisplayTableData]=useState([])
+
     const [traineeLevelFilter,setTraineeLevelFilter]=useState([])
     const [traineeLevelFilterDuplicate,setTraineeLevelFilterDuplicate]=useState([])
     const [newTraineeData,setnewTraineeData]=useState({})
     const [SendTaskNameForModel,SetSendTaskNameForModel]=useState("")
     const [assignedExistingArray,setAssignedExistingArray]=useState([])
-    const [displayTraineeData,setdisplayTraineeData]=useState([])
+
 
     //react pagination
     const [pageCount,setPageCount]=useState(Number)
@@ -687,7 +689,7 @@ export const AdminTraineePage = () =>{
         const firstIndex=lastIndex-recordsPerPage 
         setpaginationTableSerialNo(firstIndex)
         const records=traineeTaskFilterMethod[0].task.slice(firstIndex,lastIndex)
-        setdisplayTraineeData(records)
+        setdisplayTableData(records)
         const npages=Math.ceil(traineeTaskFilterMethod[0].task.length/recordsPerPage)
         setPageCount(npages) 
 
@@ -699,12 +701,61 @@ export const AdminTraineePage = () =>{
 
     },[traineeLevel])
 
+    //search task in table
+    const handleSearchTaskInTable=(e)=>{
+        var a=[...displayTraineeArray]
+        var b=e.target.value
+        if(b.length>0){
+            var obj=[]
+            var count=0
+            for(var i=0;i<a.length;i++){
+                count=0
+                for(var j=0;j<b.length;j++){
+                    var nme=a[i].heading[j].toLowerCase()
+                    if(nme===b[j]){
+                        ++count
+                    }
+                } 
+                if(count===b.length){
+                    obj[obj.length]=a[i]
+                }
+            } 
+            // setting search array data in main aray 
+            setDisplayTraineeArray(obj)
+
+            const recordsPerPage=5
+            const lastIndex=1*recordsPerPage
+            const firstIndex=lastIndex-recordsPerPage 
+            const records=obj.slice(firstIndex,lastIndex)
+            setdisplayTableData(records)
+            const npages=Math.ceil(obj.length/recordsPerPage)
+            setPageCount(npages)
+            
+        }
+        else{
+            //resetting search
+            var traineeTaskFilterMethod=traineeTasks.filter((v,i)=>{
+                return v.level===traineeLevel ? v : null
+            })
+            setDisplayTraineeArray([...traineeTaskFilterMethod[0].task])
+
+            const recordsPerPage=5
+            const lastIndex=1*recordsPerPage
+            const firstIndex=lastIndex-recordsPerPage 
+            const records=traineeTaskFilterMethod[0].task.slice(firstIndex,lastIndex)
+            setdisplayTableData(records)
+            const npages=Math.ceil(traineeTaskFilterMethod[0].task.length/recordsPerPage)
+            setPageCount(npages)
+        }
+    }
+
+    //pagination button clicking 
     const handlePageClick= (id) =>{  
         const recordsPerPage=5
         const lastIndex=id.selected*recordsPerPage
         setpaginationTableSerialNo(lastIndex)
         const records=displayTraineeArray.slice(lastIndex,lastIndex+5)
-        setdisplayTraineeData(records)
+        setdisplayTableData(records)
     }
 
     //admin entering new trainee email and doj for trainee login 
@@ -731,7 +782,6 @@ export const AdminTraineePage = () =>{
                 return val
             }
         })
-        
 
         var finalDispatc=traineeTasks.map((value,index)=>{
             return value.level===traineeLevel ? {...value,task:updateTraineeAddingData} : value
@@ -767,17 +817,50 @@ export const AdminTraineePage = () =>{
         SetSendTaskNameForModel(heading)
         setAssignedExistingArray(assignedArray)
     }
+
+    //changing array of object by clicling difficulty level
+    const handleTraineeDificultyLevel=(traineeLevel)=>{
+        setTraineeLevel(traineeLevel)
+
+        //pagination array changing 
+        const paginationButtonDisable=document.querySelectorAll('.page-item')
+        for(var i=0;i<paginationButtonDisable.length;i++){
+            paginationButtonDisable[i].classList.remove('active')
+        }
+
+        //dificulty card changing
+        var cardIndex=0
+        if(traineeLevel==="fresher"){
+            cardIndex=0
+        }
+        else if(traineeLevel==="beginner"){
+            cardIndex=1
+        }
+        else{
+            cardIndex=2
+        }
+
+        var difficultyDiv=document.querySelectorAll('.dificulty-card')
+        for(var j=0;j<difficultyDiv.length;j++){
+            if(j===cardIndex){
+                difficultyDiv[j].classList.add('trainee-card-active')
+            }
+            else{
+                difficultyDiv[j].classList.remove('trainee-card-active')
+            }
+        }
+    }
     return(
         <>
          
-            <div class="trainee-height main-content py-2 header-default-background">
+            <div class="trainee-height main-content py-2 header-default-background" id="trainee">
                 <div className="container d-flex flex-wrap">
                     <div className="col-12 col-md-6 col-lg-4 p-2">
-                        <div className="border trainee-card position-relative pointer" onClick={()=>setTraineeLevel('fresher')}>
+                        <div className="trainee-card trainee-card-active dificulty-card position-relative pointer" onClick={()=>handleTraineeDificultyLevel('fresher')}>
                             <div className="trainee-card-image">
-                                <img src="https://1.bp.blogspot.com/-PURtt_JRkMo/WiMt2JuAPkI/AAAAAAAAA3U/Urtupv7diq4zRpaohaQc4Xm5fE-azl08QCLcBGAs/s1600/1288bc_35e1e1d7df744822a285e0062ab8bcc5.jpg_srz_614_440_85_22_0.50_1.20_0.00_jpg_srz.jpg" alt="card-image" className="col-12"/>
+                                <img src={require('../image/fresher.jpg')} alt="card-image" className="col-12"/>
                             </div> 
-                            <div className="trainee-ccandidate-div">
+                            <div className="trainee-candidate-div">
                                 <p className="m-0">
                                     <CiUser className="fs-5"/>
                                     <span className="ps-3">20 Candidate</span>
@@ -793,11 +876,11 @@ export const AdminTraineePage = () =>{
                     </div>
                     
                     <div className="col-12 col-md-6 col-lg-4 p-2">
-                        <div className="border trainee-card position-relative pointer" onClick={()=>setTraineeLevel('beginner')}>
+                        <div className="trainee-card dificulty-card position-relative pointer" onClick={()=>handleTraineeDificultyLevel('beginner')}>
                             <div className="trainee-card-image">
-                                <img src="https://1.bp.blogspot.com/-PURtt_JRkMo/WiMt2JuAPkI/AAAAAAAAA3U/Urtupv7diq4zRpaohaQc4Xm5fE-azl08QCLcBGAs/s1600/1288bc_35e1e1d7df744822a285e0062ab8bcc5.jpg_srz_614_440_85_22_0.50_1.20_0.00_jpg_srz.jpg" alt="card-image" className="col-12"/>
+                                <img src={require('../image/Beginners.jpg')} alt="card-image" className="col-12"/>
                             </div> 
-                            <div className="trainee-ccandidate-div">
+                            <div className="trainee-candidate-div">
                                 <p className="m-0">
                                     <CiUser className="fs-5"/>
                                     <span className="ps-3">20 Candidate</span>
@@ -813,11 +896,11 @@ export const AdminTraineePage = () =>{
                     </div>
 
                     <div className="col-12 col-md-6 col-lg-4 p-2">
-                        <div className="border trainee-card position-relative pointer" onClick={()=>setTraineeLevel('intermediate')}>
+                        <div className="trainee-card dificulty-card position-relative pointer" onClick={()=>handleTraineeDificultyLevel('intermediate')}>
                             <div className="trainee-card-image">
-                                <img src="https://1.bp.blogspot.com/-PURtt_JRkMo/WiMt2JuAPkI/AAAAAAAAA3U/Urtupv7diq4zRpaohaQc4Xm5fE-azl08QCLcBGAs/s1600/1288bc_35e1e1d7df744822a285e0062ab8bcc5.jpg_srz_614_440_85_22_0.50_1.20_0.00_jpg_srz.jpg" alt="card-image" className="col-12"/>
+                                <img src={require('../image/Intermediate.jpg')} alt="card-image" className="col-12"/>
                             </div> 
-                            <div className="trainee-ccandidate-div">
+                            <div className="trainee-candidate-div">
                                 <p className="m-0">
                                     <CiUser className="fs-5"/>
                                     <span className="ps-3">20 Candidate</span>
@@ -834,65 +917,102 @@ export const AdminTraineePage = () =>{
 
                     <div className="col-12 d-inline-flex pe-3 mt-4">
                         <h3 className="col-6 ps-3">{traineeLevel.charAt(0).toUpperCase()+ traineeLevel.slice(1)} task lists</h3>
-                        <div className="col-6 text-end">
-                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addTaskModel">Add Tasks</button>
+                        <div className="col-6 d-inline-flex justify-content-end">
+                            <div className="col-5">
+                                <input type="email" class="form-control col-6" placeholder="search" onChange={handleSearchTaskInTable}/>
+                            </div>
+                            <div className="col-3 text-end">
+                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addTaskModel">Add Tasks</button>
+                            </div>
                         </div>
                     </div>
 
-                    <table className="col-12 trainee-card p-2 text-center my-4" cellPadding={"10px"}>
-                        <thead>
-                            <tr>
-                                <th>Task no</th>
-                                <th>Task title</th>
-                                <th>Task tutorial video</th>
-                                <th>Task reference document</th>
-                                <th>view</th>
-                                <th>Assign</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                displayTraineeData.map((v,i)=>{
-                                    return <tr key={i}>
-                                                <td>{paginationTableSerialNo+1+i}</td>
-                                                <td>{v.heading}</td>
-                                                <td className={v.tutorialVideo!==undefined && v.tutorialVideo.length>0 ? "text-success" : "text-danger"}>
-                                                    {v.tutorialVideo!==undefined && v.tutorialVideo.length>0 ? "Available" : "Unavailable"}
-                                                </td>
-                                                <td className={v.learningWebsite!==undefined && v.learningWebsite.length>0 ? "text-success" : "text-danger"}>
-                                                    {v.learningWebsite!==undefined && v.learningWebsite.length>0 ?  "Available" : "Unavailable"}
-                                                </td>
-                                                <td>
-                                                    <HiOutlineViewfinderCircle className="fs-5 pointer" data-bs-toggle="modal" data-bs-target="#viewObjectandEdit" onClick={()=>handleViewAndEditModel(v)}/>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#assignTaskModel" onClick={()=>handleSendTaskNameForModel(v.heading,v.taskAssignedFor)}>Assign</button>
-                                                </td>
-                                            </tr>
-                                })
-                            }
-                        </tbody>
-                    </table>
-                    <div className="col-12 text-center">
-                        <ReactPaginate 
-                            previousLabel={"previous"}
-                            nextLabel={"next"}
-                            breakLabel={'...'}
-                            pageCount={pageCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={3}
-                            onPageChange={handlePageClick}
-                            containerClassName={"pagination justify-content-center"}
-                            pageClassName={"page-item"}
-                            pageLinkClassName={"page-link"}
-                            previousClassName={"page-item"}
-                            previousLinkClassName={"page-link"}
-                            nextClassName={"page-item"}
-                            nextLinkClassName={"page-link"}
-                            breakClassName={"page-item"}
-                            breakLinkClassName={"page-link"}
-                            activeClassName={"active"}
-                        />
+                    <div className="col-12 m-2">
+                        <table className="col-12 p-2 text-center trainee-card my-4 trainee-card-table" cellSpacing={"20px"}>
+                            <thead>
+                                <tr>
+                                    <th>Task no</th>
+                                    <th>Task title</th>
+                                    {
+                                        traineeLevel!=='intermediate' ?
+                                            <>
+                                                <th >Task tutorial video</th>
+                                                <th>Task reference document</th>
+                                            </>
+                                    :   
+                                        <>
+                                            <th>Task description</th>
+                                            <th>Task images</th>
+                                        </>
+                                    }
+                                    <th>view</th>
+                                    <th>Assign</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    displayTableData.map((v,i)=>{
+                                        return <tr key={i}>
+                                                    <td>{paginationTableSerialNo+1+i}</td>
+                                                    <td>{v.heading}</td>
+
+                                                    {traineeLevel!=='intermediate' ?
+                                                            <>                                                               
+                                                                <td className={v.tutorialVideo!==undefined && v.tutorialVideo.length>0 ? "text-success" : "text-danger"}>
+                                                                    {v.tutorialVideo!==undefined && v.tutorialVideo.length>0 ? "Available" : "Unavailable"}
+                                                                </td>
+                                                                <td className={v.learningWebsite!==undefined && v.learningWebsite.length>0 ? "text-success" : "text-danger"}>
+                                                                    {v.learningWebsite!==undefined && v.learningWebsite.length>0 ?  "Available" : "Unavailable"}
+                                                                </td>
+                                                            </>
+                                                        :
+                                                            <>
+                                                                <td className={v.textareaCnt!==undefined && v.textareaCnt.length>0 ? "text success":"text-danger"}>
+                                                                    {v.textareaCnt!==undefined && v.textareaCnt.length>0 ? "Available":"Unavailable"}
+                                                                </td>
+                                                                <td className={v.images!==undefined && v.images!=='' ? "text success":"text-danger"}>
+                                                                    {v.tutorialVideo!==undefined && v.tutorialVideo.length!=='' ? "Available" : "Unavailable"}
+                                                                </td>
+                                                            </>
+                                                    }
+
+                                                    <td>
+                                                        <HiOutlineViewfinderCircle className="fs-5 pointer" data-bs-toggle="modal" data-bs-target="#viewObjectandEdit" onClick={()=>handleViewAndEditModel(v)}/>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#assignTaskModel" onClick={()=>handleSendTaskNameForModel(v.heading,v.taskAssignedFor)}>Assign</button>
+                                                    </td>
+                                                </tr>
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-12 d-inline-flex mt-3">
+                        <div className="col-4">
+                            <p className="ps-3">Total number of task for {traineeLevel.charAt(0).toUpperCase()+ traineeLevel.slice(1)} :{displayTraineeArray.length}</p>
+                        </div>
+                        <div className="col-8 d-inline-flex justify-content-end">
+                            <ReactPaginate 
+                                previousLabel={"previous"}
+                                nextLabel={"next"}
+                                breakLabel={'...'}
+                                pageCount={pageCount}
+                                marginPagesDisplayed={2}
+                                pageRangeDisplayed={2}
+                                onPageChange={handlePageClick}
+                                containerClassName={"pagination justify-content-center"}
+                                pageClassName={"page-item"}
+                                pageLinkClassName={"page-link"}
+                                previousClassName={"page-item"}
+                                previousLinkClassName={"page-link"}
+                                nextClassName={"page-item"}
+                                nextLinkClassName={"page-link"}
+                                breakClassName={"page-item"}
+                                breakLinkClassName={"page-link"}
+                                activeClassName={"active"}
+                            />
+                        </div>
                     </div>
                     
                 </div>
@@ -1003,7 +1123,7 @@ export const AdminTraineePage = () =>{
                                 </div>
                             </div>
                             
-                            <table className="col-12 text-center" cellPadding={"15px"}>
+                            <table className="col-12 text-center trainee-assign-user-table" cellSpacing={"15px"}>
                                 <thead>
                                     <tr>
                                         <th>
@@ -1045,35 +1165,48 @@ export const AdminTraineePage = () =>{
                             <h5 class="modal-title">view task details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-
-                        <div className="modal-body p-3 d-flex flex-wrap align-items-center">
-                            <div className="col-12 col-lg-5 text-center">
-                                <img src={showTaskObject.image!=='' ? showTaskObject.image : null} alt="task-image" className="col-10 rounded"/>
-                            </div>
-                            <div className="col-12 col-lg-7 p-2">
-                                <p>{showTaskObject.textareaCnt!='' ? showTaskObject.textareaCnt : null}</p>
-                                <div className="col-12">
-                                    <h5>Task related videos</h5>
-                                    {
-                                        showTaskObject.tutorialVideo!==undefined ?
-                                            showTaskObject.tutorialVideo.map((v,i)=>{
-                                                return <div className="col-12 p-2">
-                                                            <span>
-                                                            video - {i+1}
-                                                            <a href={v} target="_blank" className="ps-4">{v}</a>
-                                                            </span>
-                                                        </div>
-                                            })
-                                        :
-                                            null
-                                    }
+                        
+                        {
+                            traineeLevel!=='intermediate'?
+                                <div className="modal-body p-3 d-flex flex-wrap align-items-center">
+                                    <div className="col-12 col-lg-5 text-center">
+                                        <img src={showTaskObject.image!=='' ? showTaskObject.image : null} alt="task-image" className="col-10 rounded"/>
+                                    </div>
+                                    <div className="col-12 col-lg-7 p-2">
+                                        <p>{showTaskObject.textareaCnt!='' ? showTaskObject.textareaCnt : null}</p>
+                                        <div className="col-12">
+                                            <h5>Task related videos</h5>
+                                            {
+                                                showTaskObject.tutorialVideo!==undefined ?
+                                                    showTaskObject.tutorialVideo.map((v,i)=>{
+                                                        return <div className="col-12 p-2">
+                                                                    <span>
+                                                                    video - {i+1}
+                                                                    <a href={v} target="_blank" className="ps-4">{v}</a>
+                                                                    </span>
+                                                                </div>
+                                                    })
+                                                :
+                                                    null
+                                            }
+                                        </div>
+                                        <div className="col-12 mt-3">
+                                            <h5>Task related documents</h5>
+                                            <a href={showTaskObject.learningWebsite!=='' ? showTaskObject.learningWebsite : null} target="_blank">{showTaskObject.learningWebsite!=='' ? showTaskObject.learningWebsite : null}</a>
+                                        </div>
+                                    </div>              
                                 </div>
-                                <div className="col-12 mt-3">
-                                    <h5>Task related documents</h5>
-                                    <a href={showTaskObject.learningWebsite!=='' ? showTaskObject.learningWebsite : null} target="_blank">{showTaskObject.learningWebsite!=='' ? showTaskObject.learningWebsite : null}</a>
-                                </div>
-                            </div>              
-                        </div>
+                            :
+                                <div className="modal-body p-3 d-flex flex-wrap align-items-center">
+                                    <div className="col-12 col-lg-5 text-center">
+                                        <img src={showTaskObject.image!=='' ? showTaskObject.image : null} alt="task-image" className="col-10 rounded"/>
+                                    </div>
+                                    <div className="col-12 col-lg-7 p-2">
+                                        <h4>{showTaskObject.heading!=='' ? showTaskObject.heading : null}</h4>
+                                        <p>{showTaskObject.textareaCnt!='' ? showTaskObject.textareaCnt : null}</p>
+                                    </div>              
+                                </div> 
+                        }
                     </div>
                 </div>
             </div>
