@@ -622,9 +622,24 @@ export const AdminTraineePage = () =>{
             level:'intermediate',
             task:[
                 {
-                    heading:'create login and signup page',
-                    textareaCnt:'',
-                    image:''
+                    heading:'Sign in page',
+                    textareaCnt:'create a responsive sign-in page',
+                    image:require('../image/intermediateTasks/question1.png')
+                },
+                {
+                    heading:'Sign up page',
+                    textareaCnt:'create a responsive sign-up page for user registration',
+                    image:require('../image/intermediateTasks/question2.png')
+                },
+                {
+                    heading:'Gird and flex',
+                    textareaCnt:'design the boxes using grid or flex',
+                    image:require('../image/intermediateTasks/question3.png')
+                },
+                {
+                    heading:'Crud operation',
+                    textareaCnt:'you can create,read,update,delete operation using react js',
+                    image:require('../image/intermediateTasks/question4.png')
                 }
             ]
         }
@@ -664,12 +679,17 @@ export const AdminTraineePage = () =>{
     const [traineeLevel,setTraineeLevel]=useState("fresher")
     const [displayTraineeArray,setDisplayTraineeArray]=useState([])
     const [displayTableData,setdisplayTableData]=useState([])
-
     const [traineeLevelFilter,setTraineeLevelFilter]=useState([])
     const [traineeLevelFilterDuplicate,setTraineeLevelFilterDuplicate]=useState([])
     const [newTraineeData,setnewTraineeData]=useState({})
     const [SendTaskNameForModel,SetSendTaskNameForModel]=useState("")
     const [assignedExistingArray,setAssignedExistingArray]=useState([])
+    const [fresherCount,setFresherCount]=useState(Number)
+    const [beginnerCount,setBeginnerCount]=useState(Number)
+    const [intermediateCount,setIntermediateCount]=useState(Number)
+    const [traineeModelList,setTraineeModelList]=useState(Array)
+    const [traineeModelRole,setTraineeModelRole]=useState(String)
+    // const []
 
 
     //react pagination
@@ -683,22 +703,41 @@ export const AdminTraineePage = () =>{
         })
         setDisplayTraineeArray([...traineeTaskFilterMethod[0].task])
 
+        //trainees count checking
+        var fc=0;
+        var bc=0;
+        var ic=0;
+        for(var i=0;i<traineeDetails.length;i++){
+            if(traineeDetails[i].position==='fresher'){
+                fc++
+            }
+            else if(traineeDetails[i].position==='beginner'){
+                bc++
+            }
+            else{
+                ic++
+            }
+        }
+        setFresherCount(fc)
+        setBeginnerCount(bc)
+        setIntermediateCount(ic)
+
         //pagination 
         const recordsPerPage=5
-        const lastIndex=1*recordsPerPage
-        const firstIndex=lastIndex-recordsPerPage 
+        const firstIndex=0
+        const lastIndex=1*recordsPerPage       
         setpaginationTableSerialNo(firstIndex)
         const records=traineeTaskFilterMethod[0].task.slice(firstIndex,lastIndex)
         setdisplayTableData(records)
         const npages=Math.ceil(traineeTaskFilterMethod[0].task.length/recordsPerPage)
         setPageCount(npages) 
 
+
         var traineeLevelFilterMethod=traineeDetails.filter((v,i)=>{
             return v.position===traineeLevel
         })
         setTraineeLevelFilter(traineeLevelFilterMethod)
         setTraineeLevelFilterDuplicate(traineeLevelFilterMethod)
-
     },[traineeLevel])
 
     //search task in table
@@ -850,6 +889,23 @@ export const AdminTraineePage = () =>{
             }
         }
     }
+
+
+    //display trainee list to admin
+    const handleTraineeList=(traineeType)=>{
+        var listOfTrainee=traineeDetails.filter((v,i)=>{
+            return v.position===traineeType
+        })
+        setTraineeModelList(listOfTrainee)
+        if(listOfTrainee[0].position!==''){
+            setTraineeModelRole(listOfTrainee[0].position)
+        }
+        else{
+            setTraineeModelRole("no users in this")
+        }
+    }
+
+
     return(
         <>
          
@@ -861,9 +917,9 @@ export const AdminTraineePage = () =>{
                                 <img src={require('../image/fresher.jpg')} alt="card-image" className="col-12"/>
                             </div> 
                             <div className="trainee-candidate-div">
-                                <p className="m-0">
+                                <p className="m-0" onClick={()=>handleTraineeList('fresher')} data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
                                     <CiUser className="fs-5"/>
-                                    <span className="ps-3">20 Candidate</span>
+                                    <span className="ps-3">{fresherCount} Candidate</span>
                                 </p>
                             </div>
 
@@ -881,9 +937,9 @@ export const AdminTraineePage = () =>{
                                 <img src={require('../image/Beginners.jpg')} alt="card-image" className="col-12"/>
                             </div> 
                             <div className="trainee-candidate-div">
-                                <p className="m-0">
+                                <p className="m-0" onClick={()=>handleTraineeList('beginner')}  data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
                                     <CiUser className="fs-5"/>
-                                    <span className="ps-3">20 Candidate</span>
+                                    <span className="ps-3">{beginnerCount} Candidate</span>
                                 </p>
                             </div>
 
@@ -901,9 +957,9 @@ export const AdminTraineePage = () =>{
                                 <img src={require('../image/Intermediate.jpg')} alt="card-image" className="col-12"/>
                             </div> 
                             <div className="trainee-candidate-div">
-                                <p className="m-0">
+                                <p className="m-0" onClick={()=>handleTraineeList('intermediate')} data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
                                     <CiUser className="fs-5"/>
-                                    <span className="ps-3">20 Candidate</span>
+                                    <span className="ps-3">{intermediateCount} Candidate</span>
                                 </p>
                             </div>
 
@@ -967,11 +1023,11 @@ export const AdminTraineePage = () =>{
                                                             </>
                                                         :
                                                             <>
-                                                                <td className={v.textareaCnt!==undefined && v.textareaCnt.length>0 ? "text success":"text-danger"}>
+                                                                <td className={v.textareaCnt!==undefined && v.textareaCnt.length>0 ? "text-success":"text-danger"}>
                                                                     {v.textareaCnt!==undefined && v.textareaCnt.length>0 ? "Available":"Unavailable"}
                                                                 </td>
-                                                                <td className={v.images!==undefined && v.images!=='' ? "text success":"text-danger"}>
-                                                                    {v.tutorialVideo!==undefined && v.tutorialVideo.length!=='' ? "Available" : "Unavailable"}
+                                                                <td className={v.image!==undefined && v.image!=='' ? "text-success":"text-danger"}>
+                                                                    {v.image!==undefined && v.image.length!=='' ? "Available" : "Unavailable"}
                                                                 </td>
                                                             </>
                                                     }
@@ -988,6 +1044,7 @@ export const AdminTraineePage = () =>{
                             </tbody>
                         </table>
                     </div>
+
                     <div className="col-12 d-inline-flex mt-3">
                         <div className="col-4">
                             <p className="ps-3">Total number of task for {traineeLevel.charAt(0).toUpperCase()+ traineeLevel.slice(1)} :{displayTraineeArray.length}</p>
@@ -1167,7 +1224,17 @@ export const AdminTraineePage = () =>{
                         </div>
                         
                         {
-                            traineeLevel!=='intermediate'?
+                            traineeLevel==='intermediate'?
+                                <div className="modal-body p-3 d-flex flex-wrap align-items-center">
+                                    <div className="col-12 col-lg-5 text-center">
+                                        <img src={showTaskObject.image} alt="card-image" className="col-12"/>
+                                    </div>
+                                    <div className="col-12 col-lg-7 p-2">
+                                        <h4>{showTaskObject.heading!=='' ? showTaskObject.heading : null}</h4>
+                                        <p>{showTaskObject.textareaCnt!='' ? showTaskObject.textareaCnt : null}</p>
+                                    </div>              
+                                </div> 
+                            :
                                 <div className="modal-body p-3 d-flex flex-wrap align-items-center">
                                     <div className="col-12 col-lg-5 text-center">
                                         <img src={showTaskObject.image!=='' ? showTaskObject.image : null} alt="task-image" className="col-10 rounded"/>
@@ -1196,21 +1263,46 @@ export const AdminTraineePage = () =>{
                                         </div>
                                     </div>              
                                 </div>
-                            :
-                                <div className="modal-body p-3 d-flex flex-wrap align-items-center">
-                                    <div className="col-12 col-lg-5 text-center">
-                                        <img src={showTaskObject.image!=='' ? showTaskObject.image : null} alt="task-image" className="col-10 rounded"/>
-                                    </div>
-                                    <div className="col-12 col-lg-7 p-2">
-                                        <h4>{showTaskObject.heading!=='' ? showTaskObject.heading : null}</h4>
-                                        <p>{showTaskObject.textareaCnt!='' ? showTaskObject.textareaCnt : null}</p>
-                                    </div>              
-                                </div> 
                         }
                     </div>
                 </div>
             </div>
              
+            {/* displaying list of trainees*/}
+            <div class="modal fade" id="displayListOfTrainee" tabindex="-1" aria-labelledby="exampledisplayListOfTrainee" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"> list</h5>
+                    </div>
+                        <form class="modal-body p-3">
+                            <div class="mb-3 row">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" id="staticEmail" name="traineeMail" onChange={handleNewTrainee}/>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="staticDoj" class="col-sm-2 col-form-label">Date of joining</label>
+                                <div class="col-sm-10">
+                                <input type="date" class="form-control" id="staticDoj" name="traineeDoj" onChange={handleNewTrainee}/>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPassword" value="Applied@123" readOnly/>
+                                </div>
+                            </div>
+
+                            <div className="text-end">
+                                <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
       </>
     )
 }
