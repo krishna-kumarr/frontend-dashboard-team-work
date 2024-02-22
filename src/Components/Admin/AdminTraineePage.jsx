@@ -1227,14 +1227,19 @@ export const AdminTraineePage = () =>{
                         
                         {
                             traineeLevel==='intermediate'?
-                                <div className="modal-body p-3 d-flex flex-wrap align-items-center">
-                                    <div className="col-12 col-lg-5 text-center">
-                                        <img src={showTaskObject.image} alt="card-image" className="col-12"/>
-                                    </div>
-                                    <div className="col-12 col-lg-7 p-2">
-                                        <h4>{showTaskObject.heading!=='' ? showTaskObject.heading : null}</h4>
-                                        <p>{showTaskObject.textareaCnt!='' ? showTaskObject.textareaCnt : null}</p>
-                                    </div>              
+                                <div className="modal-body p-3">
+                                    <div className="d-flex flex-wrap align-items-center">
+                                        <div className="col-12 col-lg-5 text-center">
+                                            <img src={showTaskObject.image} alt="card-image" className="col-12"/>
+                                        </div>
+                                        <div className="col-12 col-lg-7 p-2">
+                                            <h4>{showTaskObject.heading!=='' ? showTaskObject.heading : null}</h4>
+                                            <p>{showTaskObject.textareaCnt!='' ? showTaskObject.textareaCnt : null}</p>
+                                        </div>
+                                    </div>     
+                                    <div className="text-end my-3">
+                                        <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
+                                    </div>           
                                 </div> 
                             :
                                 <div className="modal-body p-3 d-flex flex-wrap align-items-center">
@@ -1263,7 +1268,10 @@ export const AdminTraineePage = () =>{
                                             <h5>Task related documents</h5>
                                             <a href={showTaskObject.learningWebsite!=='' ? showTaskObject.learningWebsite : null} target="_blank">{showTaskObject.learningWebsite!=='' ? showTaskObject.learningWebsite : null}</a>
                                         </div>
-                                    </div>              
+                                        <div className="text-end my-3">
+                                            <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
+                                        </div>  
+                                    </div> 
                                 </div>
                         }
                     </div>
@@ -1301,7 +1309,9 @@ export const AdminTraineePage = () =>{
                             :
                                 <p className="text-danger text-center">No trainee found</p>
                         }
-                                              
+                        <div className="text-end my-3">
+                            <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>

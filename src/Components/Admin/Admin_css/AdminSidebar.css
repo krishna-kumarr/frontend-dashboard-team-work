@@ -9,7 +9,7 @@
     height: 0
 }
 :root{
-    --header-height: 7vh;
+    --header-height: 8vh;
     --sidebar-width: 68px;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;

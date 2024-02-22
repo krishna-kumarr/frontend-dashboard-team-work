@@ -1,0 +1,20 @@
+.trainee-roadmap-card{
+    position: relative;
+}
+.trainee-roadmap-lock{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(50px);
+    z-index: 3;
+    border-radius: 0px 12px 12px 12px;
+    display: flex;
+}
+.trainee-roadmap-lock div{
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}

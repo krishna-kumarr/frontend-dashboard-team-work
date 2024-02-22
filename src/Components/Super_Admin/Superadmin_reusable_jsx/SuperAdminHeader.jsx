@@ -12,7 +12,7 @@ import { CiLogout } from "react-icons/ci";
 import { RxDashboard } from "react-icons/rx";
 import { Link } from "react-router-dom";
 
-export const DashboardHeader = () =>{
+export const SuperAdminHeader = () =>{
     const handleMenuToogle = () =>{
         document.getElementById('nav-bar').classList.toggle('extend-sidebar')
         document.getElementById('header').classList.toggle('body-pd')
@@ -70,37 +70,32 @@ export const DashboardHeader = () =>{
             <div class="l-navbar navbar-default-background" id="nav-bar">
                 <nav class="nav">
                     <div> 
-                        <Link to="/admin" class="nav_logo adra-logo-original col-12" id="adra-logo-responsive"> 
+                        <Link to="/super_admin" class="nav_logo adra-logo-original col-12" id="adra-logo-responsive"> 
                             <img src={require("../../image/adraimage.png")} className="adra-img-logo"/>
                         </Link>
 
                         <div class="nav_list">
-                            <Link to="/admin" class="nav_link active"> 
+                            <Link to="/super_admin" class="nav_link active"> 
                                 <span><RxDashboard className="fs-4"/></span>
                                 <span class="nav_name">Dashboard</span> 
                             </Link> 
                             
-                            <Link to="/admin/road-map" class="nav_link" > 
+                            <Link to="/super_admin/road-map" class="nav_link" > 
                                 <span><TbSitemap className="fs-4"/></span>
                                 <span class="nav_name">Road map</span> 
                             </Link> 
 
-                            <Link to="/admin/security-practices" class="nav_link"> 
+                            <Link to="/super_admin/security-practices" class="nav_link"> 
                                 <span><SiSecurityscorecard className="fs-4"/></span>
                                 <span class="nav_name">Security practices</span> 
                             </Link> 
-
-                            <Link to="/admin/trainee" class="nav_link" > 
-                                <span><PiUserPlusLight className="fs-4"/></span>
-                                <span class="nav_name">Trainee</span> 
-                            </Link> 
                             
-                            <Link to="/admin/projects" class="nav_link" > 
+                            <Link to="/super_admin/projects" class="nav_link" > 
                                 <span><IoFolderOutline className="fs-4"/></span>
                                 <span class="nav_name">Projects</span> 
                             </Link> 
 
-                            <Link to="/admin/blogs&articles" class="nav_link"> 
+                            <Link to="/super_admin/blogs&articles" class="nav_link"> 
                                 <span><GrArticle className="fs-4"/></span>
                                 <span class="nav_name">Blogs & Articles</span> 
                             </Link> 
@@ -137,7 +132,7 @@ export const DashboardHeader = () =>{
                         <img src="https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_640.png" alt="user-image"/> 
                         <div className="ps-3">
                                 <h6 className="m-0">Adra product</h6>
-                                <p className="m-0 important-heading">Admin view</p>
+                                <p className="m-0 important-heading">Super admin view</p>
                             </div>
                         <div className="profile-content shadow col-8 col-md-5 col-lg-2">
 

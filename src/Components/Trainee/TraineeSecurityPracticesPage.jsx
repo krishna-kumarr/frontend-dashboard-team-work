@@ -5,7 +5,7 @@ import Aos from "aos";
 import 'aos/dist/aos.css';
 
 
-export const AdminSecurityPracticesPage = () =>{
+export const TraineeSecurityPracticesPage = () =>{
     useEffect(()=>{
         Aos.init()
     },[])

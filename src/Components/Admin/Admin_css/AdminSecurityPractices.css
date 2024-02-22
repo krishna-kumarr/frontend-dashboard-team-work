@@ -30,9 +30,8 @@
     color:var(--security-practices-btn-color);
 }
 .security-practice-modal-content{
-    min-height: 70vh;
-    max-height: 70vh;
-    overflow: scroll;
+    min-height: 90vh;
+    max-height: 90vh;
 }
 .set-solving-model{
     font-size:1rem;
@@ -40,8 +39,6 @@
 .add-securityPractices-btn,.add-types-btn{
     background-color: var(  --security-practices-btn-background);
     color:var(--imp-heading-color);
-    padding: .2rem .5rem;
-    border-radius: .5rem;
 }
 .addsecurity-input{
     border: 1px solid var(--border-color);
@@ -49,4 +46,7 @@
 }
 .important-heading{
     color:var(--imp-heading-color);
+}
+.security-attack-image-modelBox img{
+    height: 300px;
 }
