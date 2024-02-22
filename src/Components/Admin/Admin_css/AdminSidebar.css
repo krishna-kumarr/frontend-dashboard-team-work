@@ -9,19 +9,13 @@
     height: 0
 }
 :root{
-    --header-height: 4rem;
+    --header-height: 7vh;
     --sidebar-width: 68px;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
     --z-fixed-sidebar: 110;
     --z-fixed-top: 100;
     --bs-gutter-x:0!important;
-}
-
-
-/* body  */
-body{
-    transition: .2s;
 }
 
 /* header default backgroudd */
@@ -31,7 +25,7 @@ body{
 }
 .main-content-default-height-width{
     margin: calc(var(--header-height)) 0 0 0;
-    transition: .5s;
+    transition: .2s ease;
 }
 .header{
     width: 100%;
@@ -44,7 +38,7 @@ body{
     justify-content: space-between;
     padding: 0 1rem;
     z-index: var(--z-fixed-top);
-    transition: .5s;
+    transition: all .2s ease;
     border-bottom: 1px solid var(--header-bottom-color);
 }
 .header_toggle{
@@ -85,7 +79,7 @@ a{
     width: var(--sidebar-width);
     height: 100vh;
     padding: .5rem 1rem 0 0;
-    transition: .5s;
+    transition: all .2s ease;
     z-index: var(--z-fixed-sidebar);
 }
 .nav{

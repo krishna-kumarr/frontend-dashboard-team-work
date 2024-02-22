@@ -897,11 +897,13 @@ export const AdminTraineePage = () =>{
             return v.position===traineeType
         })
         setTraineeModelList(listOfTrainee)
-        if(listOfTrainee[0].position!==''){
+
+        if(listOfTrainee.length>0){
             setTraineeModelRole(listOfTrainee[0].position)
+            setTraineeModelRole(traineeType)
         }
         else{
-            setTraineeModelRole("no users in this")
+            setTraineeModelRole("no users in "+traineeType)
         }
     }
 
@@ -916,8 +918,8 @@ export const AdminTraineePage = () =>{
                             <div className="trainee-card-image">
                                 <img src={require('../image/fresher.jpg')} alt="card-image" className="col-12"/>
                             </div> 
-                            <div className="trainee-candidate-div">
-                                <p className="m-0" onClick={()=>handleTraineeList('fresher')} data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
+                            <div className="trainee-candidate-div" onClick={()=>handleTraineeList('fresher')}>
+                                <p className="m-0" data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
                                     <CiUser className="fs-5"/>
                                     <span className="ps-3">{fresherCount} Candidate</span>
                                 </p>
@@ -936,8 +938,8 @@ export const AdminTraineePage = () =>{
                             <div className="trainee-card-image">
                                 <img src={require('../image/Beginners.jpg')} alt="card-image" className="col-12"/>
                             </div> 
-                            <div className="trainee-candidate-div">
-                                <p className="m-0" onClick={()=>handleTraineeList('beginner')}  data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
+                            <div className="trainee-candidate-div" onClick={()=>handleTraineeList('beginner')}>
+                                <p className="m-0" data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
                                     <CiUser className="fs-5"/>
                                     <span className="ps-3">{beginnerCount} Candidate</span>
                                 </p>
@@ -956,8 +958,8 @@ export const AdminTraineePage = () =>{
                             <div className="trainee-card-image">
                                 <img src={require('../image/Intermediate.jpg')} alt="card-image" className="col-12"/>
                             </div> 
-                            <div className="trainee-candidate-div">
-                                <p className="m-0" onClick={()=>handleTraineeList('intermediate')} data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
+                            <div className="trainee-candidate-div" onClick={()=>handleTraineeList('intermediate')} >
+                                <p className="m-0" data-bs-toggle="modal" data-bs-target="#displayListOfTrainee">
                                     <CiUser className="fs-5"/>
                                     <span className="ps-3">{intermediateCount} Candidate</span>
                                 </p>
@@ -984,7 +986,7 @@ export const AdminTraineePage = () =>{
                     </div>
 
                     <div className="col-12 m-2">
-                        <table className="col-12 p-2 text-center trainee-card my-4 trainee-card-table" cellSpacing={"20px"}>
+                        <table className="col-12 p-2 text-center trainee-card trainee-card-table" cellSpacing={"20px"}>
                             <thead>
                                 <tr>
                                     <th>Task no</th>
@@ -1272,34 +1274,34 @@ export const AdminTraineePage = () =>{
             <div class="modal fade" id="displayListOfTrainee" tabindex="-1" aria-labelledby="exampledisplayListOfTrainee" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title"> list</h5>
-                    </div>
-                        <form class="modal-body p-3">
-                            <div class="mb-3 row">
-                                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="staticEmail" name="traineeMail" onChange={handleNewTrainee}/>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="staticDoj" class="col-sm-2 col-form-label">Date of joining</label>
-                                <div class="col-sm-10">
-                                <input type="date" class="form-control" id="staticDoj" name="traineeDoj" onChange={handleNewTrainee}/>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword" value="Applied@123" readOnly/>
-                                </div>
-                            </div>
-
-                            <div className="text-end">
-                                <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
-                            </div>
-                        </form>
+                        <div class="modal-header">
+                            <h5 class="modal-title">{traineeModelRole} list</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        {
+                            traineeModelList.length>0 ?
+                                    <table className="col-12 text-center trainee-assign-user-table" cellSpacing={"15px"}>
+                                        <thead>
+                                            <tr>
+                                                <th>S.no</th>
+                                                <th>Name</th>
+                                                <th>Date of joining</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {traineeModelList.map((v,i)=>{
+                                                return  <tr key={i}>
+                                                            <td>{i+1}</td>
+                                                            <td>{v.name}</td>
+                                                            <td>{v.dateOfJoining}</td>
+                                                        </tr>
+                                            })}
+                                        </tbody>
+                                    </table>
+                            :
+                                <p className="text-danger text-center">No trainee found</p>
+                        }
+                                              
                     </div>
                 </div>
             </div>

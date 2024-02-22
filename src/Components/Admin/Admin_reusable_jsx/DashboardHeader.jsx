@@ -116,7 +116,7 @@ export const DashboardHeader = () =>{
 
             <nav class="header header-default-background" id="header">
                 <div class="ps-4" onClick={handleMenuToogle}> 
-                    <CgMenuLeft className="fs-3"/>
+                    <CgMenuLeft className="fs-3 pointer"/>
                 </div>
                 <ul className="d-inline-flex col-10 col-sm-7 col-md-5 col-lg-3 m-0 align-items-center header-ul">
                     <li className="col">

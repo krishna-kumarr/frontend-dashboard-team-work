@@ -4,17 +4,20 @@
     box-sizing: border-box;
 }
 .login-background{
-    background-image: url('../image/Login\ Page\ Design.png');
+    background-image: url('../image/Login\ Page\ Design\ black.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
 }
 .login-parent-div{
-    padding:3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .login-div-leftside{
-    padding: 14rem 3rem;
+    padding: 7rem 3rem;
     border-radius: 1.5rem;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(128, 128, 128, 0.329);
     display: flex;
     align-items: center;
     justify-content: center;
