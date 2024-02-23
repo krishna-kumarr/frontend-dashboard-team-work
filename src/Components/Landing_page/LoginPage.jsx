@@ -60,7 +60,6 @@ export const LoginPage = () =>{
     ]
 
     const pageRender=useNavigate()
-    const [err,setErr]=useState(false)
     const [loginInput,setLoginInput]=useState({
         username:'',
         password:''
@@ -74,12 +73,10 @@ export const LoginPage = () =>{
         if(loginInput.username!=='' && loginInput.password!==''){
             var username=loginInput.username.charAt(0).toUpperCase()+loginInput.username.slice(1)
 
-
-            setErr(false)
             var getUserLevel=users.filter((v,i)=>{
                 return v.username===username
             })
-            console.log(username)
+
             if(getUserLevel.length>0){
                 if(getUserLevel[0].username===username){
                     if(getUserLevel[0].password===loginInput.password){
@@ -136,7 +133,7 @@ export const LoginPage = () =>{
                         <h2 className="fw-bold mb-3 login-text">Login</h2>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label text-light login-mandatory">Username<span className="ps-2">*</span></label>
-                            <input type="text" class="form-control login-input py-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" name="username" onChange={handleLoginInput} autoFocus/>
+                            <input type="text" class="form-control login-input py-3" id="exampleInputEmail1" placeholder="Username" name="username" onChange={handleLoginInput} autoFocus/>
                         </div>
                         <div class="mb-4">
                             <label for="exampleInputPassword1" class="form-label text-light login-mandatory">Password<span className="ps-2">*</span></label>

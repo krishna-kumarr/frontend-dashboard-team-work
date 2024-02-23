@@ -61,8 +61,7 @@ export const ReactRouter = () =>{
                 <Route path="/trainee/road-map" element={<><TraineeDashboardHeader/><section className="main-content-default-height-width" id="adminDashboard"><TraineeRoadMapPage/></section></>}/>
                 <Route path="/trainee/security-practices" element={<><TraineeDashboardHeader/><section className="main-content-default-height-width" id="adminDashboard"><TraineeSecurityPracticesPage/></section></>}/>
                 <Route path="/trainee/blogs&articles" element={<><TraineeDashboardHeader/><section className="main-content-default-height-width" id="adminDashboard"><TraineeBlogsARticlesPage/></section></>}/>
-            </Routes> 
- 
+            </Routes>  
         </BrowserRouter>
     )
 }

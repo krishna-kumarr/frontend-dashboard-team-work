@@ -244,7 +244,7 @@ export const AdminSecurityPracticesPage = () =>{
                     {/* security practice adding modal box  */}
                     <div className="modal modal-md fade" id="staticBackdropAddSecurityPractices" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div className="modal-dialog">
-                            <div className="modal-content security-practice-modal-content">
+                            <div className="modal-content">
                                 <div className="modal-header">
                                     <h1 className="modal-title text-dark fs-5" id="staticBackdropLabel">Add more security related issues</h1>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -252,14 +252,14 @@ export const AdminSecurityPracticesPage = () =>{
                                 {err ? <p className="text-danger">Some inputs are missing</p> : null}
                                 <form className="modal-body text-dark">
                                     <div class="mb-3 row align-items-center">
-                                        <label for="statictitle" class="col-sm-2 col-form-label">Title</label>
-                                        <div class="col-sm-10">
+                                        <label for="statictitle" class="col-sm-3 col-form-label">Title</label>
+                                        <div class="col-sm-9">
                                             <input type="text" className="form-control" name="title" id="statictitle"/>
                                         </div>
                                     </div>
                                     <div class="mb-3 row align-items-center">
-                                        <label for="staticdescription" class="col-sm-2 col-form-label">Description</label>
-                                        <div class="col-sm-10">
+                                        <label for="staticdescription" class="col-sm-3 col-form-label">Description</label>
+                                        <div class="col-sm-9">
                                             <textarea cols="3" rows="5" name="description" id="staticdescription" className="form-control" />
                                         </div>
                                     </div>
@@ -270,8 +270,8 @@ export const AdminSecurityPracticesPage = () =>{
                                                 <button type="button" className="col-8 add-securityPractices-btn text-light border-0" onClick={handleAddVideoReference}>Add video</button>
                                             :
                                                 <div class="mb-3 row align-items-center">
-                                                    <label for="staticvideo" class="col-sm-2 col-form-label">Reference video</label>
-                                                    <div class="col-sm-10">
+                                                    <label for="staticvideo" class="col-sm-3 col-form-label">Reference video</label>
+                                                    <div class="col-sm-9">
                                                         <input type="text" className="form-control" name="video" id="staticvideo"/>
                                                     </div>
                                                 </div>
@@ -284,8 +284,8 @@ export const AdminSecurityPracticesPage = () =>{
                                                 <button type="button" className="col-8 add-securityPractices-btn text-light border-0" onClick={handleAddDocumentReference}>Add document</button>
                                             :
                                                 <div class="mb-3 row align-items-center">
-                                                    <label for="staticreference" class="col-sm-2 col-form-label">Add document</label>
-                                                    <div class="col-sm-10">
+                                                    <label for="staticreference" class="col-sm-3 col-form-label">Add document</label>
+                                                    <div class="col-sm-9">
                                                         <input type="text" className="form-control" name="document" id="staticreference"/>
                                                     </div>
                                                 </div>

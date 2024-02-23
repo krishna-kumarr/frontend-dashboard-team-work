@@ -118,8 +118,8 @@ export const DashboardHeader = () =>{
                 <div class="ps-4" onClick={handleMenuToogle}> 
                     <CgMenuLeft className="fs-3 pointer"/>
                 </div>
-                <ul className="d-inline-flex col-10 col-sm-7 col-md-5 col-lg-3 m-0 align-items-center header-ul">
-                    <li className="col">
+                <ul className="d-inline-flex col-10 col-sm-7 col-md-5 col-lg-4 col-xl-2 m-0 align-items-center justify-content-around header-ul">
+                    <li>
                         {
                             defaultTheme ? 
                                 <BsSun onClick={toggleTheme} className="theme-icon-color fs-5 pointer"/>
@@ -127,15 +127,15 @@ export const DashboardHeader = () =>{
                                 <RxMoon onClick={toggleTheme} className="theme-icon-color fs-5 pointer"/>
                         }
                     </li>
-                    <li className="notification m-0 col">
+                    <li className="notification m-0">
                         <span className="fs-5 pointer"><IoMdNotificationsOutline/></span>
                         <div className="notification-content shadow col-8 col-md-5 col-lg-4">
 
                         </div>
                     </li>
-                    <li className="header_img pointer profile">
+                    <li className="header_img pointer">
                         <img src="https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_640.png" alt="user-image"/> 
-                        <div className="ps-3">
+                        <div className="ps-4">
                                 <h6 className="m-0">Adra product</h6>
                                 <p className="m-0 important-heading">Admin view</p>
                             </div>
